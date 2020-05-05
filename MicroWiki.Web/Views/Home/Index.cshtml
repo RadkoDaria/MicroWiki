@@ -1,0 +1,23 @@
+﻿@model IEnumerable<MicroWiki.Web.Models.ArticleViewModel>
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<h1>.NET Wiki</h1>
+<hr />
+@if (Model.Count() == 0)
+{
+    <p>There are no pages on the wiki. @Html.ActionLink("Create first article", "Create", "PageController")</p>
+}
+else
+{
+    <h2>Recent Articles</h2>
+    <ul>
+        @foreach (var article in Model)
+        {
+            <li>@Html.ActionLink(article.Title, "Show", "Page", new { id = article.Id }, null)</li>
+        }
+    </ul>
